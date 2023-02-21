@@ -21,3 +21,5 @@ COPY --from=builder /root/.cache /root/.cache
 WORKDIR /repo
 
 USER 1001
+
+CMD /bin/sh
