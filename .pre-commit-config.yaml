@@ -1,21 +1,31 @@
 ---
 repos:
+  # Yaml
   - repo: "https://github.com/adrienverge/yamllint.git"
     rev: "v1.29.0"
     hooks:
       - id: yamllint
-  - repo: "https://github.com/dnephin/pre-commit-golang.git"
-    rev: "v0.5.1"
-    hooks:
-      - id: go-fmt
+  # Golang
+  # - repo: "https://github.com/dnephin/pre-commit-golang.git"
+  #   rev: "v0.5.1"
+  #   hooks:
+  #     - id: go-fmt
+  # Python
   - repo: "https://github.com/psf/black.git"
     rev: "23.1.0"
     hooks:
       - id: black
+  # Dockerfile
   - repo: "https://github.com/hadolint/hadolint.git"
     rev: "v2.12.0"
     hooks:
       - id: hadolint
+  # Shell
+  - repo: "https://github.com/lovesegfault/beautysh.git"
+    rev: "v6.2.1"
+    hooks:
+      - id: beautysh
+  # General
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: "v4.4.0"
     hooks:
