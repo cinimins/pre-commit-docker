@@ -4,4 +4,5 @@
 
 ```bash
 docker build --platform linux/amd64 -t cinimins/pre-commit-docker:vX.Y.Z
+docker push cinimins/pre-commit-docker:vX.Y.Z
 ```

@@ -5,6 +5,7 @@ repos:
     rev: "v1.29.0"
     hooks:
       - id: yamllint
+        args: [-c=/.config/yamllint.yaml]
   # Golang
   # - repo: "https://github.com/dnephin/pre-commit-golang.git"
   #   rev: "v0.5.1"

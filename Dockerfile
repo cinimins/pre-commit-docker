@@ -2,8 +2,8 @@ FROM python:3.12.0a6-alpine3.17 AS base
 
 # git for cloning modules for pre-commit (even needed for just running it on-prem)
 RUN apk add --no-cache git && \
-    apk add --no-cache pre-commit=3.1.1-r0 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN pip3 install --no-cache-dir pre-commit==3.1.1
+    apk add --no-cache pre-commit=3.2.0-r0 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN pip3 install --no-cache-dir pre-commit==3.2.0
 
 FROM base AS builder
 
@@ -21,6 +21,11 @@ RUN pre-commit install --install-hooks
 
 FROM base
 
+# make sure we get colorized output with `docker run`
+ENV TERM xterm-color256
+
+RUN git config --global --add safe.directory /repo
+
 # install bash for running shellcheck
 RUN apk add --no-cache bash # go=1.19.7-r0
 # dependency for Dockerfile linting
@@ -30,4 +35,6 @@ WORKDIR /repo
 
 COPY --from=builder /root/.cache/pre-commit /root/.cache/pre-commit
 
-CMD ["/bin/sh"]
+COPY .pre-commit-config.yaml /
+
+CMD ["pre-commit", "run",  "--all-files", "-c", "/pre-commit-config.yaml"]
