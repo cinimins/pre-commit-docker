@@ -29,7 +29,7 @@ RUN git config --global --add safe.directory /repo
 # install bash for running shellcheck
 RUN apk add --no-cache bash # go=1.19.7-r0
 # dependency for Dockerfile linting
-RUN wget -q -O - https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 > /bin/hadolint
+RUN wget -q -O - https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 > /bin/hadolint && chmod +x /bin/hadolint
 
 WORKDIR /repo
 

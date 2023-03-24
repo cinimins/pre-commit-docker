@@ -21,6 +21,8 @@ repos:
     rev: "v2.12.0"
     hooks:
       - id: hadolint
+        args: [--ignore=SC3037]
+        # SC3037: in posix sh, echo flags are undefined
   # Shell
   - repo: "https://github.com/lovesegfault/beautysh.git"
     rev: "v6.2.1"
